@@ -2,12 +2,12 @@ $(document).ready(function(){
     var colectionItem = {};
     var colectionItemPrice = {};
     var taxRate = 0.1;
-    var discountRate = 0.05;
+    
     $('.card').on('click', function(){
     var productName = $(this).find('#nama').text();
     var productPriceText = $(this).find("#harga").text();
     var productPrice = parseFloat(productPriceText.replace('Rp.', '').replace('.', '').replace(',', ''));
-
+    var productName = productName.replace(/\s+/g, '_').toLowerCase()
     if (!colectionItem[productName]) {
         colectionItem[productName] = 1;
         colectionItemPrice[productName] = productPrice;
@@ -39,6 +39,7 @@ $(document).ready(function(){
 
     $('#cart').on('click', '.item-in-troll-image', function () {
         var productName = $(this).data('product');
+        var productName = productName.replace(/\s+/g, '_').toLowerCase()
         if (colectionItem[productName] > 1) {
             colectionItem[productName]--;
             var totalPrice = colectionItem[productName] * colectionItemPrice[productName];
@@ -55,7 +56,7 @@ $(document).ready(function(){
 
     // Function to sanitize class names
     function sanitizeClassName(name) {
-        return name.replace(/[^a-zA-Z0-9/s]/g, '');
+        return name.replace(/[^a-zA-Z0-9/s]/g, '_');
     }
 
     function totalAmount(){
@@ -65,12 +66,11 @@ $(document).ready(function(){
     }, 0);
 
     var tax = subtotal * taxRate;
-    var discount = subtotal * discountRate;
-    var totalAmount = (subtotal + tax) - discount;
+    var totalAmount = subtotal + tax;
 
     $('#total').text("Rp. "+totalAmount.toLocaleString('id-ID'));
     $('#tax').text("Rp. "+tax.toLocaleString('id-ID'));
-    $('#discount').text("Rp. "+discount.toLocaleString('id-ID'));
+    
     }
   
         
