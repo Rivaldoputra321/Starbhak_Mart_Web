@@ -68,9 +68,23 @@ div.row{
     padding: 1px 10px;
     line-height: 99%;
     margin-left: 85%;
+    border-radius: 20px;
+    height: 35px;
+    background-color: rgb(4, 4, 137);
   }
-.print-button-container img {
-    vertical-align: middle;
-    height: 30px;
-  }
+.bx-cart{
+    color: white;
+    font-size: 25px;
+}
   
+@media print {
+    body {
+      visibility: hidden;
+    }
+    .total{
+      visibility: visible;
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+  }

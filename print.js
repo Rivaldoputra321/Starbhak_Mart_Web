@@ -2,7 +2,7 @@ $(document).ready(function() {
     $("#bayar").click(function() {
         console.log("Tombol 'bayar' ditekan!");
         var kiriID = $("#cart").attr("id");
-        console.log("ID kiri:", kiriID);
+        console.log("ID cart:", kiriID);
 
         // Logika lain yang ingin Anda jalankan saat tombol 'bayar' ditekan
 
